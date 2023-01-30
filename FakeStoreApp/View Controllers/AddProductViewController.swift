@@ -9,7 +9,28 @@ import Foundation
 import UIKit
 import SwiftUI
 
+enum AddProductTextFieldType: Int {
+    case title
+    case price
+    case imageUrl
+}
+
+struct AddProductFormState {
+    var title: Bool = false
+    var price: Bool = false
+    var imageUrl: Bool = false
+    var description: Bool = false
+    
+    var isValid: Bool {
+        title && price && imageUrl && description
+    }
+}
+
 class AddProductViewController: UIViewController {
+    
+    private var selectedCategory: Category?
+    private var addProductFormState = AddProductFormState()
+    
     // MARK: - Properties
     
     private lazy var titleTextField: UITextField = {
@@ -18,6 +39,8 @@ class AddProductViewController: UIViewController {
         textfield.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         textfield.leftViewMode = .always
         textfield.borderStyle = .roundedRect
+        textfield.tag = AddProductTextFieldType.title.rawValue
+        textfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         return textfield
     }()
     
@@ -28,6 +51,8 @@ class AddProductViewController: UIViewController {
         textfield.leftViewMode = .always
         textfield.borderStyle = .roundedRect
         textfield.keyboardType = .numberPad
+        textfield.tag = AddProductTextFieldType.price.rawValue
+        textfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         return textfield
     }()
     
@@ -37,6 +62,8 @@ class AddProductViewController: UIViewController {
         textfield.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         textfield.leftViewMode = .always
         textfield.borderStyle = .roundedRect
+        textfield.tag = AddProductTextFieldType.imageUrl.rawValue
+        textfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         return textfield
     }()
     
@@ -44,7 +71,27 @@ class AddProductViewController: UIViewController {
         let textView = UITextView()
         textView.contentInsetAdjustmentBehavior = .automatic
         textView.backgroundColor = UIColor.lightGray
+        textView.delegate = self
         return textView
+    }()
+    
+    private lazy var categoryPickerView: CategoryPickerView = {
+        let pickerView = CategoryPickerView { [weak self] category in
+            print(category)
+            self?.selectedCategory = category
+        }
+        return pickerView
+    }()
+    
+    private lazy var cancelBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
+        return barButtonItem
+    }()
+    
+    private lazy var saveBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonPressed))
+        barButtonItem.isEnabled = false
+        return barButtonItem
     }()
     
     private lazy var stackView: UIStackView = {
@@ -61,6 +108,8 @@ class AddProductViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        navigationItem.leftBarButtonItem = cancelBarButtonItem
+        navigationItem.rightBarButtonItem = saveBarButtonItem
         setupUI()
         setupConstraints()
     }
@@ -70,6 +119,12 @@ class AddProductViewController: UIViewController {
         stackView.addArrangedSubview(titleTextField)
         stackView.addArrangedSubview(priceTextField)
         stackView.addArrangedSubview(descriptionTextView)
+        
+        let hostingController = UIHostingController(rootView: categoryPickerView)
+        stackView.addArrangedSubview(hostingController.view)
+        addChild(hostingController)
+        hostingController.didMove(toParent: self)
+        
         stackView.addArrangedSubview(imageURLTextField)
         
         view.addSubview(stackView)
@@ -80,16 +135,52 @@ class AddProductViewController: UIViewController {
         stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         descriptionTextView.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
+    
+    
+    // MARK: - Selectors
+    @objc func cancelButtonPressed(_ sender: UITextField) {
+        
+    }
+    
+    @objc func saveButtonPressed(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    @objc func textFieldDidChange(_ sender: UITextField) {
+        guard let text = sender.text else { return }
+        
+        switch sender.tag {
+        case AddProductTextFieldType.title.rawValue:
+            addProductFormState.title = !text.isEmpty
+        case AddProductTextFieldType.price.rawValue:
+            addProductFormState.price = !text.isEmpty && text.isNumeric
+        case AddProductTextFieldType.imageUrl.rawValue:
+            addProductFormState.imageUrl = !text.isEmpty
+            print("validate the image")
+        default:
+            break
+        }
+        
+        saveBarButtonItem.isEnabled = addProductFormState.isValid
+    }
 }
 
 
 struct AddProductViewControllerRepresentable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> some UIViewController {
-        AddProductViewController()
+        UINavigationController(rootViewController: AddProductViewController())
     }
     
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         
+    }
+}
+
+extension AddProductViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        addProductFormState.description = !textView.text.isEmpty
+        saveBarButtonItem.isEnabled = addProductFormState.isValid
     }
 }
 
