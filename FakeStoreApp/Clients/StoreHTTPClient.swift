@@ -16,6 +16,20 @@ enum NetworkError: Error {
 
 class StoreHTTPClient {
     
+    func getProductsByCategory(categoryId: Int) async throws -> [Product] {
+        let (data, response) = try await URLSession.shared.data(from: URL.productsByCategory(categoryId))
+        guard let httpsResponse = response as? HTTPURLResponse,
+              httpsResponse.statusCode == 200
+        else {
+            throw NetworkError.invalidServerResponse
+        }
+        
+        guard let products = try? JSONDecoder().decode([Product].self, from: data) else {
+            throw NetworkError.decodingError
+        }
+        return products
+    }
+    
     func getAllCategories() async throws -> [Category] {
         
         let (data, response) = try await URLSession.shared.data(from: URL.allCategories)

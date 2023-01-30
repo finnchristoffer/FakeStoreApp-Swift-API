@@ -28,4 +28,8 @@ extension URL {
     static var allCategories: URL {
         URL(string: "/api/v1/categories", relativeTo: self.default)!
     }
+    
+    static func productsByCategory(_ categoryId: Int) -> URL {
+        return URL(string: "/api/v1/categories/\(categoryId)/products", relativeTo: Self.default)!
+    }
 }
