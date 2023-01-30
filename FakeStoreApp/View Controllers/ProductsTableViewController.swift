@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class ProductsTableViewController: UITableViewController {
     
@@ -60,10 +61,9 @@ class ProductsTableViewController: UITableViewController {
         
         let product = products[indexPath.row]
         
-        var configuration = cell.defaultContentConfiguration()
-        configuration.text = product.title
-        configuration.secondaryText = product.description
-        cell.contentConfiguration = configuration
+        cell.contentConfiguration = UIHostingConfiguration(content: {
+            ProductCellView(product: product)
+        })
         
         return cell
     }
