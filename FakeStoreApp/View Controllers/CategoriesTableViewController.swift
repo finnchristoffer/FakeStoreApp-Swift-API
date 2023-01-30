@@ -32,10 +32,17 @@ class CategoriesTableViewController: UITableViewController {
     private func populateCategories() async {
         do {
             categories = try await client.getAllCategories()
-            print(categories)
         } catch {
             
         }
+    }
+    
+    
+    // MARK: - TableView Delegate & Datasource
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let category = categories[indexPath.row]
+        self.navigationController?.pushViewController(ProductsTableViewController(category: category), animated: true)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,8 +70,6 @@ class CategoriesTableViewController: UITableViewController {
                 }
             }
         }
-        
-        
         return cell
     }
 }
