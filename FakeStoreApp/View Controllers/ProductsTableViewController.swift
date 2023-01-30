@@ -25,6 +25,11 @@ class ProductsTableViewController: UITableViewController {
     }
     // MARK: - Properties
 
+    private lazy var addProductBarItemButton: UIBarButtonItem = {
+        
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addProductButtonPressed))
+        return barButtonItem
+    }()
     
 
     // MARK: - Lifecycle
@@ -32,7 +37,7 @@ class ProductsTableViewController: UITableViewController {
         super.viewDidLoad()
         title = category.name
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ProductTableViewCell")
-        
+        navigationItem.rightBarButtonItem = addProductBarItemButton
         Task {
             await populateProducts()
         }
@@ -48,6 +53,14 @@ class ProductsTableViewController: UITableViewController {
         } catch {
             print(error)
         }
+    }
+    
+    // MARK: - Selectors
+    
+    @objc private func addProductButtonPressed(_ sender: UIBarButtonItem) {
+        let addProductVC = AddProductViewController()
+        let navigationController = UINavigationController(rootViewController: addProductVC)
+        present(navigationController, animated: true)
     }
     
     // MARK: - TableView Delegate & Datasource

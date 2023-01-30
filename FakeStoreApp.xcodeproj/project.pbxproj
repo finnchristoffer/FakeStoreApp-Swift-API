@@ -11,6 +11,7 @@
 		4A17478E2987969900EB5D79 /* ProductsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A17478D2987969900EB5D79 /* ProductsTableViewController.swift */; };
 		4A1747912987A8AE00EB5D79 /* ProductCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1747902987A8AE00EB5D79 /* ProductCellView.swift */; };
 		4A1747932987A9E600EB5D79 /* Locale+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1747922987A9E600EB5D79 /* Locale+Extentions.swift */; };
+		4A1747952987CD7000EB5D79 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1747942987CD7000EB5D79 /* AddProductViewController.swift */; };
 		4A9E3B66298670B50045D896 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E3B65298670B50045D896 /* AppDelegate.swift */; };
 		4A9E3B68298670B50045D896 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E3B67298670B50045D896 /* SceneDelegate.swift */; };
 		4A9E3B6A298670B50045D896 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E3B69298670B50045D896 /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 		4A17478D2987969900EB5D79 /* ProductsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTableViewController.swift; sourceTree = "<group>"; };
 		4A1747902987A8AE00EB5D79 /* ProductCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellView.swift; sourceTree = "<group>"; };
 		4A1747922987A9E600EB5D79 /* Locale+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extentions.swift"; sourceTree = "<group>"; };
+		4A1747942987CD7000EB5D79 /* AddProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
 		4A9E3B62298670B50045D896 /* FakeStoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FakeStoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A9E3B65298670B50045D896 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A9E3B67298670B50045D896 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			children = (
 				4A9E3B7A298670DB0045D896 /* CategoriesTableViewController.swift */,
 				4A17478D2987969900EB5D79 /* ProductsTableViewController.swift */,
+				4A1747942987CD7000EB5D79 /* AddProductViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			files = (
 				4A9E3B6A298670B50045D896 /* ViewController.swift in Sources */,
 				4A17478C29878CC400EB5D79 /* Product.swift in Sources */,
+				4A1747952987CD7000EB5D79 /* AddProductViewController.swift in Sources */,
 				4A9E3B84298685710045D896 /* URL+Extensions.swift in Sources */,
 				4A1747932987A9E600EB5D79 /* Locale+Extentions.swift in Sources */,
 				4A9E3B66298670B50045D896 /* AppDelegate.swift in Sources */,
