@@ -38,8 +38,15 @@ class ProductsTableViewController: UITableViewController {
         title = category.name
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ProductTableViewCell")
         navigationItem.rightBarButtonItem = addProductBarItemButton
-        Task {
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Task{
             await populateProducts()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     // MARK: - Helpers

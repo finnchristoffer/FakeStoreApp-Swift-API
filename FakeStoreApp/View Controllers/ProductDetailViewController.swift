@@ -13,6 +13,7 @@ class ProductDetailViewController: UIViewController {
     
     // MARK: - Properties
     let product: Product
+    let client = StoreHTTPClient()
     
     private lazy var descriptionLabel: UILabel = {
        let label = UILabel()
@@ -92,6 +93,8 @@ class ProductDetailViewController: UIViewController {
             productImageListVC.didMove(toParent: self)
             loadingIndicatorView.stopAnimating()
         }
+        
+        deleteProductButton.addTarget(self, action: #selector(deleteProductButtonPressed), for: .touchUpInside)
         stackView.addArrangedSubview(loadingIndicatorView)
         stackView.addArrangedSubview(descriptionLabel)
         stackView.addArrangedSubview(priceLabel)
@@ -102,5 +105,23 @@ class ProductDetailViewController: UIViewController {
     
     private func setupConstraints() {
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+    }
+    
+    // MARK: - Selectors
+    
+    @objc private func deleteProductButtonPressed(_ sender: UIButton) {
+        Task {
+            do {
+                guard let productId = product.id else {return}
+                
+                let isDeleted = try await client.deleteProduct(productId: productId)
+                if isDeleted {
+                    let _ = navigationController?.popViewController(animated: true)
+                }
+            } catch {
+                showMessage(title: "Error", message: error.localizedDescription, messageType: .error)
+            }
+        }
+        
     }
 }

@@ -36,4 +36,9 @@ extension URL {
     static var createProduct: URL {
         URL(string: "/api/v1/products/", relativeTo: Self.default)!
     }
+    
+    static func deleteProduct(_ productId: Int) -> URL {
+        
+        return URL(string: "/api/v1/products/\(productId)", relativeTo: Self.default)!
+    }
 }
