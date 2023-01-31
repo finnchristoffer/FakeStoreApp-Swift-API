@@ -15,6 +15,10 @@
 		4A1747972987D69800EB5D79 /* CategoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1747962987D69800EB5D79 /* CategoryPickerView.swift */; };
 		4A17479B298826BB00EB5D79 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A17479A298826BB00EB5D79 /* String+Extensions.swift */; };
 		4A17479D2988E79A00EB5D79 /* CreateProductRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A17479C2988E79A00EB5D79 /* CreateProductRequest.swift */; };
+		4A17479F2988F15600EB5D79 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A17479E2988F15600EB5D79 /* ProductDetailViewController.swift */; };
+		4A1747A12989036900EB5D79 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1747A02989036900EB5D79 /* Double+Extensions.swift */; };
+		4A1747A429891BA900EB5D79 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1747A329891BA900EB5D79 /* ImageLoader.swift */; };
+		4A1747A629891D4100EB5D79 /* ProductImageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1747A529891D4100EB5D79 /* ProductImageListView.swift */; };
 		4A9E3B66298670B50045D896 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E3B65298670B50045D896 /* AppDelegate.swift */; };
 		4A9E3B68298670B50045D896 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E3B67298670B50045D896 /* SceneDelegate.swift */; };
 		4A9E3B6A298670B50045D896 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E3B69298670B50045D896 /* ViewController.swift */; };
@@ -34,6 +38,10 @@
 		4A1747962987D69800EB5D79 /* CategoryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerView.swift; sourceTree = "<group>"; };
 		4A17479A298826BB00EB5D79 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		4A17479C2988E79A00EB5D79 /* CreateProductRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProductRequest.swift; sourceTree = "<group>"; };
+		4A17479E2988F15600EB5D79 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		4A1747A02989036900EB5D79 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		4A1747A329891BA900EB5D79 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		4A1747A529891D4100EB5D79 /* ProductImageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageListView.swift; sourceTree = "<group>"; };
 		4A9E3B62298670B50045D896 /* FakeStoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FakeStoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A9E3B65298670B50045D896 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A9E3B67298670B50045D896 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,8 +70,17 @@
 			children = (
 				4A1747902987A8AE00EB5D79 /* ProductCellView.swift */,
 				4A1747962987D69800EB5D79 /* CategoryPickerView.swift */,
+				4A1747A529891D4100EB5D79 /* ProductImageListView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4A1747A229891B9F00EB5D79 /* Loaders */ = {
+			isa = PBXGroup;
+			children = (
+				4A1747A329891BA900EB5D79 /* ImageLoader.swift */,
+			);
+			path = Loaders;
 			sourceTree = "<group>";
 		};
 		4A9E3B59298670B50045D896 = {
@@ -85,6 +102,7 @@
 		4A9E3B64298670B50045D896 /* FakeStoreApp */ = {
 			isa = PBXGroup;
 			children = (
+				4A1747A229891B9F00EB5D79 /* Loaders */,
 				4A17478F2987A89E00EB5D79 /* Views */,
 				4A9E3B822986855B0045D896 /* Extensions */,
 				4A9E3B7F298680450045D896 /* Models */,
@@ -105,6 +123,7 @@
 				4A9E3B7A298670DB0045D896 /* CategoriesTableViewController.swift */,
 				4A17478D2987969900EB5D79 /* ProductsTableViewController.swift */,
 				4A1747942987CD7000EB5D79 /* AddProductViewController.swift */,
+				4A17479E2988F15600EB5D79 /* ProductDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -133,6 +152,7 @@
 				4A9E3B83298685710045D896 /* URL+Extensions.swift */,
 				4A1747922987A9E600EB5D79 /* Locale+Extentions.swift */,
 				4A17479A298826BB00EB5D79 /* String+Extensions.swift */,
+				4A1747A02989036900EB5D79 /* Double+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -211,14 +231,18 @@
 				4A1747952987CD7000EB5D79 /* AddProductViewController.swift in Sources */,
 				4A17479D2988E79A00EB5D79 /* CreateProductRequest.swift in Sources */,
 				4A9E3B84298685710045D896 /* URL+Extensions.swift in Sources */,
+				4A1747A12989036900EB5D79 /* Double+Extensions.swift in Sources */,
 				4A1747932987A9E600EB5D79 /* Locale+Extentions.swift in Sources */,
 				4A9E3B66298670B50045D896 /* AppDelegate.swift in Sources */,
 				4A1747912987A8AE00EB5D79 /* ProductCellView.swift in Sources */,
+				4A1747A629891D4100EB5D79 /* ProductImageListView.swift in Sources */,
 				4A17478E2987969900EB5D79 /* ProductsTableViewController.swift in Sources */,
 				4A17479B298826BB00EB5D79 /* String+Extensions.swift in Sources */,
 				4A9E3B68298670B50045D896 /* SceneDelegate.swift in Sources */,
 				4A9E3B7E29867FEE0045D896 /* StoreHTTPClient.swift in Sources */,
 				4A1747972987D69800EB5D79 /* CategoryPickerView.swift in Sources */,
+				4A1747A429891BA900EB5D79 /* ImageLoader.swift in Sources */,
+				4A17479F2988F15600EB5D79 /* ProductDetailViewController.swift in Sources */,
 				4A9E3B7B298670DB0045D896 /* CategoriesTableViewController.swift in Sources */,
 				4A9E3B81298680570045D896 /* Category.swift in Sources */,
 			);

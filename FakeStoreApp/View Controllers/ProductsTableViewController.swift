@@ -69,9 +69,15 @@ class ProductsTableViewController: UITableViewController {
         products.count
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let product = products[indexPath.row]
+        self.navigationController?.pushViewController(ProductDetailViewController(product: product), animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath)
+        cell.accessoryType = .disclosureIndicator
         
         let product = products[indexPath.row]
         
