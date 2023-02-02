@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DeleteProductResponse: Decodable {
+struct DeleteProductResponse: Decodable, Encodable {
     var timestamp: String?
     var message: String?
     var name: String?

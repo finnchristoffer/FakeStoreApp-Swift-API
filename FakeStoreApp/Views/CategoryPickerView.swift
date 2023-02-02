@@ -29,7 +29,8 @@ struct CategoryPickerView: View {
         .pickerStyle(.wheel)
             .task {
                 do {
-                    categories = try await client.getAllCategories()
+//                    categories = try await client.getAllCategories()
+                    categories = try await client.load(Resource(url: URL.allCategories))
                     selectedCategory = categories.first
                 } catch {
                     print(error)
