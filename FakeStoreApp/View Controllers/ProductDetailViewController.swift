@@ -114,9 +114,9 @@ class ProductDetailViewController: UIViewController {
             do {
                 guard let productId = product.id else {return}
                 
-                let isDeleted = try await client.deleteProduct(productId: productId)
-
-                if isDeleted {
+                let response: Bool = try await client.load(Resource(url: URL.deleteProduct(productId), method: .delete))
+                
+                if response {
                     let _ = navigationController?.popViewController(animated: true)
                 }
             } catch {
